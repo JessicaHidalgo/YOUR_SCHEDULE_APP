@@ -20,7 +20,7 @@ class Forms extends Component {
     axios
       .post("http://localhost:9000/employees/login", {
         email: this.state.email,
-        password: parseInt(this.state.password)
+        password: (this.state.password)
       })
       .then(res => {
         if (res.status === 200) {
