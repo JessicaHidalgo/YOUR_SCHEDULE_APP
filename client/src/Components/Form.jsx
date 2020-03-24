@@ -18,13 +18,14 @@ class Forms extends Component {
     };
 
     axios
-      .post("http://localhost:9000/employees/login", {
+      .post("http://localhost:9000/auth", {
         email: this.state.email,
         password: (this.state.password)
       })
       .then(res => {
         if (res.status === 200) {
-          this.props.history.push("/Add");
+          this.setState({employee_id:res.data.employee.employee_id})
+          this.props.history.push("/Search");
         }
       });
   };

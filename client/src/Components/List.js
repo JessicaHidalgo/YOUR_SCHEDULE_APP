@@ -8,15 +8,28 @@ constructor(props) {
     this.state ={
     tasks:[]
 }}
+
 componentDidMount(){
     console.log('Fetching');
-    axios.get('http://localhost:9000/task/list')
+    axios.get('http://localhost:9000/timer',{params:{employee_id:2}})
     .then(res=>{
-
-        this.setState({tasks:res.data})
-    })
+        console.log(res);
+        this.setState({tasks:res.data.timers})
+    }
+    )
 }
 
+/*componentDidMount(){axios({
+    method: 'get',
+    url: 'http://localhost:9000/timer',
+    data: {
+      employee_id: 1
+    }
+  }).then(res=>{
+      this.setState({tasks:res.data})
+  });
+}
+*/
 deleteTask(){
     axios.delete(`http://localhost:9000/task/delete/${this.state.id}`)
 }
@@ -34,10 +47,10 @@ render () {
       <ul>
           {this.state.tasks.map((task)=>
           <div>
-              <div>Tittle:{task.tittle}</div>
+              <div>Title:{task.tittle}</div>
               <div>Description:{task.description}</div>
-              <div>startDate:{task.startDate}</div>
-              <div>endDate:{task.endDate}</div>
+              <div>startDate:{task.star_date}</div>
+              <div>endDate:{task.end_date}</div>
           <button onClick={() => this.onDelete(task.id)} >Delete</button>
           </div>)}
       </ul>)
