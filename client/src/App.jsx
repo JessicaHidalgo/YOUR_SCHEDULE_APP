@@ -14,7 +14,7 @@ function App() {
         <Home></Home>
         <Switch>
           <Route path="/Sigin" component={Forms}/>
-          <Route path="/Search" component={Search}/>
+          <Route path="/Search/:employee_id" component={Search} />
           <Route path="/Add" component={Add}/>
           <Route path="/add" component={AddTask}/>
           <Route path="/" component={Homecontent}/>

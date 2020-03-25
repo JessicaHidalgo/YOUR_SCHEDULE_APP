@@ -20,12 +20,12 @@ class Forms extends Component {
     axios
       .post("http://localhost:9000/auth", {
         email: this.state.email,
-        password: (this.state.password)
+        password: this.state.password
       })
       .then(res => {
         if (res.status === 200) {
-          this.setState({employee_id:res.data.employee.employee_id})
-          this.props.history.push("/Search");
+          
+          this.props.history.push(`/Search/${res.data.employee.employee_id}`);
         }
       });
   };
@@ -65,7 +65,7 @@ class Forms extends Component {
             placeholder="Writte down your password!"
           />
         </FormGroup>
-        <Button onClick={this.handleSubmit}>Submit</Button>
+        <Button onClick={this.handleSubmit} >Submit</Button>
       </Form>
     );
   }

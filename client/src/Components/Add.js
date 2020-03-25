@@ -4,6 +4,7 @@ import "react-datepicker/dist/react-datepicker.css";
 import axios from "axios";
 import { Row, Col, Container, Input, Label, Button } from "reactstrap";
 import { withRouter } from "react-router-dom";
+import moment from 'moment';
 // CSS Modules, react-datepicker-cssmodules.css
 // import 'react-datepicker/dist/react-datepicker-cssmodules.css';
 
@@ -13,8 +14,8 @@ class Add extends React.Component {
     this.state = {
       tittle: "",
       description: "",
-      startDate: new Date(),
-      endDate: new Date(),
+      star_date: new Date(),
+      end_date: new Date(),
       tasks: []
     };
   }
@@ -28,13 +29,13 @@ class Add extends React.Component {
 
   provideStartDate = date => {
     this.setState({
-      startDate: date
+      star_date: moment(date).format('YYY-MM-DD')
     });
   };
 
   provideEndDate = date => {
     this.setState({
-      endDate: date
+      end_date: moment(date).format('YYY-MM-DD') 
     });
   };
 
@@ -43,13 +44,14 @@ class Add extends React.Component {
     const task = {
       tittle: this.state.tittle
     };
-
+    //I need to send the employee_id trough the body
     axios
-      .post("http://localhost:9000/task/create", {
+      .post("http://localhost:9000/timer", {
+        employee_id: this.state.employee_id,
         tittle: this.state.tittle,
         description: this.state.description,
-        startDate: this.state.startDate,
-        endDate: this.state.endDate
+        star_date: this.state.star_date,
+        end_date: this.state.end_date
       })
       .then(res => {
         console.log(res);
@@ -60,12 +62,13 @@ class Add extends React.Component {
   };
 
   render() {
-    const { tittle, description, startDate, endDate } = this.state;
+    const { tittle, description, star_date, end_date } = this.state;
     return (
       <>
         <Container>
           <Row>
             <Col md="2">
+              
               <Label for="tittle"> TITTLE</Label>
 
               <Input
@@ -73,6 +76,17 @@ class Add extends React.Component {
                 type="tittle"
                 name="tittle"
                 id="tittle"
+              />
+            </Col>
+            <Col md="2">
+              
+              <Label for="tittle">EMPLOYEEID:</Label>
+
+              <Input
+                onChange={this.handleChange}
+                type="employee_id"
+                name="employee_id"
+                id="employee_id"
               />
             </Col>
             <Col md="2">
@@ -91,19 +105,19 @@ class Add extends React.Component {
               </Label>
 
               <DatePicker
-                selected={this.state.startDate}
+                selected={this.state.star_date}
                 onChange={this.provideStartDate}
-                value={startDate}
-                name="startDate"
+                value={star_date}
+                name="star_date"
               />
             </Col>
             <Col md="2">
               <Label>END DATE</Label>
               <DatePicker
-                selected={this.state.endDate}
+                selected={this.state.end_date}
                 onChange={this.provideEndDate}
-                value={endDate}
-                name="endDate"
+                value={end_date}
+                name="end_date"
               />
             </Col>
           </Row>
