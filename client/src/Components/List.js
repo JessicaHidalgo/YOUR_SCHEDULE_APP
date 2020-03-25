@@ -18,8 +18,9 @@ const ListTasks = props => {
 
   const onDelete = id => {
     axios
-      .delete(`http://localhost:9000/task/delete/${id}`)
+      .delete('http://localhost:9000/timer',{params:{task_id:id}})
       .then(response => {
+        console.log(response);
         history.push("/Add");
       })
       .catch(err => console.log(err));
@@ -28,7 +29,7 @@ const ListTasks = props => {
   return (
     <ul>
       {tasks.map(task => (
-        <div>
+        <div className='taskContainer'>
           <div>Title:{task.tittle}</div>
           <div>Description:{task.description}</div>
           <div>startDate:{task.star_date}</div>
