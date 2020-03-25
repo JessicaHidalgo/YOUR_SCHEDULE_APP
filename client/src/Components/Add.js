@@ -4,10 +4,19 @@ import "react-datepicker/dist/react-datepicker.css";
 import axios from "axios";
 import { Row, Col, Container, Input, Label, Button } from "reactstrap";
 import { withRouter } from "react-router-dom";
-import moment from 'moment';
+import moment from "moment";
 // CSS Modules, react-datepicker-cssmodules.css
 // import 'react-datepicker/dist/react-datepicker-cssmodules.css';
-
+const dateParser = date => {
+  const parsing = new Date(date);
+  const month = parsing.getMonth()+1;
+  const year = parsing.getFullYear();
+  const day = parsing.getDate();
+  console.log(year)
+  console.log(month)
+  console.log(day)
+  return `${year}-${month}-${day}`;
+};
 class Add extends React.Component {
   constructor(props) {
     super(props);
@@ -28,14 +37,19 @@ class Add extends React.Component {
   };
 
   provideStartDate = date => {
+    console.log(date)
+    console.log(dateParser(date));
     this.setState({
-      star_date: moment(date).format('YYY-MM-DD')
+      star_date: dateParser(date)
     });
   };
 
   provideEndDate = date => {
+    console.log(date)
+    console.log(dateParser(date));
+   
     this.setState({
-      end_date: moment(date).format('YYY-MM-DD') 
+      end_date: dateParser(date)
     });
   };
 
@@ -55,8 +69,9 @@ class Add extends React.Component {
       })
       .then(res => {
         console.log(res);
-        if (res.status >= 200 && res.status<=205) {
-          this.props.history.push("/Search");
+        console.log(res.status >= 200 && res.status <= 205);
+        if (res.status >= 200 && res.status <= 205) {
+          this.props.history.push(`/Search/${this.state.employee_id}`);
         }
       });
   };
@@ -68,7 +83,6 @@ class Add extends React.Component {
         <Container>
           <Row>
             <Col md="2">
-              
               <Label for="tittle"> TITTLE</Label>
 
               <Input
@@ -79,7 +93,6 @@ class Add extends React.Component {
               />
             </Col>
             <Col md="2">
-              
               <Label for="tittle">EMPLOYEEID:</Label>
 
               <Input
@@ -105,7 +118,6 @@ class Add extends React.Component {
               </Label>
 
               <DatePicker
-                selected={this.state.star_date}
                 onChange={this.provideStartDate}
                 value={star_date}
                 name="star_date"
@@ -114,7 +126,6 @@ class Add extends React.Component {
             <Col md="2">
               <Label>END DATE</Label>
               <DatePicker
-                selected={this.state.end_date}
                 onChange={this.provideEndDate}
                 value={end_date}
                 name="end_date"
