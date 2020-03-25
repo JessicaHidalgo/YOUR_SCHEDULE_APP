@@ -41,9 +41,6 @@ const Home = props => {
                 Schedule
               </DropdownToggle>
               <DropdownMenu right>
-                <Link to="/Search">
-                  <DropdownItem>List</DropdownItem>
-                </Link>
                 <Link to="/Add">
                   <DropdownItem>Add</DropdownItem>
                 </Link>
@@ -52,7 +49,7 @@ const Home = props => {
           </Nav>
           <Nav>
             <Link to="/Sigin" className="nav-link">
-              Sign In
+              See your tasks!
             </Link>
           </Nav>
         </Collapse>

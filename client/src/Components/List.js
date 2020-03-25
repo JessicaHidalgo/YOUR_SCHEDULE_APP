@@ -1,4 +1,5 @@
-import React, { Component } from "react";
+import React from "react";
+import {Button} from 'reactstrap';
 import axios from "axios";
 import { withRouter } from "react-router-dom";
 import { useHistory, useParams } from "react-router";
@@ -21,7 +22,7 @@ const ListTasks = props => {
       .delete('http://localhost:9000/timer',{params:{task_id:id}})
       .then(response => {
         console.log(response);
-        history.push("/Add");
+        history.push("/Search");
       })
       .catch(err => console.log(err));
   };
@@ -34,12 +35,12 @@ const ListTasks = props => {
           <div>Description:{task.description}</div>
           <div>startDate:{task.star_date}</div>
           <div>endDate:{task.end_date}</div>
-          <button onClick={() => onDelete(task.id)}>Delete</button>
+          <Button onClick={() => onDelete(task.id)}>Delete</Button>
         </div>
       ))}
     </ul>
   );
-  //onClick={this.deleteTask.bind(this,index)}
+ 
 };
 
 export default ListTasks;

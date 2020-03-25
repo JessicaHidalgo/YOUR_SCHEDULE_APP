@@ -4,7 +4,7 @@ import "react-datepicker/dist/react-datepicker.css";
 import axios from "axios";
 import { Row, Col, Container, Input, Label, Button } from "reactstrap";
 import { withRouter } from "react-router-dom";
-import moment from "moment";
+
 // CSS Modules, react-datepicker-cssmodules.css
 // import 'react-datepicker/dist/react-datepicker-cssmodules.css';
 const dateParser = date => {
