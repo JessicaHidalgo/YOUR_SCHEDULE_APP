@@ -65,8 +65,13 @@ class Forms extends Component {
             placeholder="Writte down your password!"
           />
         </FormGroup>
+        <br></br>
         <Button onClick={this.handleSubmit} >Submit</Button>
+        
       </Form>
+      
+      
+      
     );
   }
 }
