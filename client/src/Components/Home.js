@@ -33,23 +33,13 @@ const Home = props => {
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
           <Nav className="mr-auto" navbar>
-            <NavItem>
-              <NavLink href="https://github.com/JessicaHidalgo">GitHub</NavLink>
-            </NavItem>
             <UncontrolledDropdown nav inNavbar>
-              <DropdownToggle nav caret>
-                Schedule
-              </DropdownToggle>
-              <DropdownMenu right>
-                <Link to="/Add">
-                  <DropdownItem>Add</DropdownItem>
-                </Link>
-              </DropdownMenu>
+              <DropdownMenu right></DropdownMenu>
             </UncontrolledDropdown>
           </Nav>
           <Nav>
             <Link to="/Sigin" className="nav-link">
-              See your tasks!
+              Manage your tasks!
             </Link>
           </Nav>
         </Collapse>

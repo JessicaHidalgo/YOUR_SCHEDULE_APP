@@ -1,15 +1,20 @@
 import React from "react";
 import {Button} from 'reactstrap';
 import axios from "axios";
-import { withRouter } from "react-router-dom";
+import moment from 'moment';
 import { useHistory, useParams } from "react-router";
+
+
+//variable for my url
+
+const url ='http://localhost:9000/timer';
 const ListTasks = props => {
   const [tasks, setTasks] = React.useState([]);
   const history = useHistory();
   const {employee_id} = useParams();
   React.useEffect(() => {
     axios
-      .get("http://localhost:9000/timer", {
+      .get(url, {
         params: { employee_id }
       })
       .then(res => {
@@ -19,10 +24,14 @@ const ListTasks = props => {
 
   const onDelete = id => {
     axios
-      .delete('http://localhost:9000/timer',{params:{task_id:id}})
+      .delete(url,{params:{task_id:id}})
       .then(response => {
         console.log(response);
-        history.push("/Search");
+        let newTaskarray = tasks.filter((task)=>{
+            return  task.id != id 
+        })
+        setTasks(newTaskarray)
+        
       })
       .catch(err => console.log(err));
   };
@@ -31,11 +40,12 @@ const ListTasks = props => {
     <ul>
       {tasks.map(task => (
         <div className='taskContainer'>
-          <div>Title:{task.tittle}</div>
-          <div>Description:{task.description}</div>
-          <div>startDate:{task.star_date}</div>
-          <div>endDate:{task.end_date}</div>
-          <Button onClick={() => onDelete(task.id)}>Delete</Button>
+          <div><h6>Title:</h6>{task.tittle}</div>
+          <div><h6>Description:</h6>{task.description}</div>
+         
+          <div><h6>Start Date:</h6>{moment(task.star_date).format('YYYY-MM-DD')}</div>
+          <div><h6>End Date:</h6>{moment(task.end_date).format('YYYY-MM-DD')}</div>
+          <Button outline color="danger" onClick={() => onDelete(task.id)}>Delete</Button>
         </div>
       ))}
     </ul>

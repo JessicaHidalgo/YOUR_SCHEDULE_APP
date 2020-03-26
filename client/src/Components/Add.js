@@ -5,18 +5,17 @@ import axios from "axios";
 import { Row, Col, Container, Input, Label, Button } from "reactstrap";
 import { withRouter } from "react-router-dom";
 
-// CSS Modules, react-datepicker-cssmodules.css
-// import 'react-datepicker/dist/react-datepicker-cssmodules.css';
 const dateParser = date => {
   const parsing = new Date(date);
-  const month = parsing.getMonth()+1;
+  const month = parsing.getMonth() + 1;
   const year = parsing.getFullYear();
   const day = parsing.getDate();
-  console.log(year)
-  console.log(month)
-  console.log(day)
+  console.log(year);
+  console.log(month);
+  console.log(day);
   return `${year}-${month}-${day}`;
 };
+const url= 'http://localhost:9000/timer';
 class Add extends React.Component {
   constructor(props) {
     super(props);
@@ -37,7 +36,7 @@ class Add extends React.Component {
   };
 
   provideStartDate = date => {
-    console.log(date)
+   
     console.log(dateParser(date));
     this.setState({
       star_date: dateParser(date)
@@ -45,9 +44,9 @@ class Add extends React.Component {
   };
 
   provideEndDate = date => {
-    console.log(date)
+    
     console.log(dateParser(date));
-   
+
     this.setState({
       end_date: dateParser(date)
     });
@@ -58,9 +57,9 @@ class Add extends React.Component {
     const task = {
       tittle: this.state.tittle
     };
-    //I need to send the employee_id trough the body
+   
     axios
-      .post("http://localhost:9000/timer", {
+      .post(url, {
         employee_id: this.state.employee_id,
         tittle: this.state.tittle,
         description: this.state.description,
@@ -82,17 +81,7 @@ class Add extends React.Component {
       <>
         <Container>
           <Row>
-            <Col md="2">
-              <Label for="tittle"> TITTLE</Label>
-
-              <Input
-                onChange={this.handleChange}
-                type="tittle"
-                name="tittle"
-                id="tittle"
-              />
-            </Col>
-            <Col md="2">
+          <Col md="2">
               <Label for="tittle">EMPLOYEEID:</Label>
 
               <Input
@@ -102,6 +91,17 @@ class Add extends React.Component {
                 id="employee_id"
               />
             </Col>
+            <Col md="2">
+              <Label for="tittle"> TITLE</Label>
+
+              <Input
+                onChange={this.handleChange}
+                type="tittle"
+                name="tittle"
+                id="tittle"
+              />
+            </Col>
+            
             <Col md="2">
               <Label for="description"> DESCRIPTION </Label>
               <Input
@@ -135,7 +135,7 @@ class Add extends React.Component {
           <Row>
             {" "}
             <Col md="3">
-              <Button onClick={this.handleSubmit}>Add</Button>
+              <Button outline color="success" onClick={this.handleSubmit}>Add</Button>
             </Col>{" "}
           </Row>
         </Container>
