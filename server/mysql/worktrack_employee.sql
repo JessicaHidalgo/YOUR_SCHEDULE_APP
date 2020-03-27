@@ -1,5 +1,3 @@
-CREATE DATABASE  IF NOT EXISTS `worktrack` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
-USE `worktrack`;
 -- MySQL dump 10.13  Distrib 8.0.19, for Win64 (x86_64)
 --
 -- Host: localhost    Database: worktrack
@@ -40,7 +38,7 @@ CREATE TABLE `employee` (
 
 LOCK TABLES `employee` WRITE;
 /*!40000 ALTER TABLE `employee` DISABLE KEYS */;
-INSERT INTO `employee` VALUES (1,'jhidalgo094@gmail.com','hidalgo','2020-03-17 20:22:29',NULL),(2,'jhidalgo093@gmail.com','hidalgo1','2020-03-17 20:23:30',NULL),(3,'jhidalgo092@gmail.com','hidalgo2','2020-03-17 20:23:51',NULL),(4,'jhidalgo095@gmail.com','hidalgo3','2020-03-17 20:24:23',NULL);
+INSERT INTO `employee` VALUES (1,'jhidalgo094@gmail.com','hidalgo','2020-03-18 02:22:29',NULL),(2,'jhidalgo093@gmail.com','hidalgo1','2020-03-18 02:23:30',NULL),(3,'jhidalgo092@gmail.com','hidalgo2','2020-03-18 02:23:51',NULL),(4,'jhidalgo095@gmail.com','hidalgo3','2020-03-18 02:24:23',NULL);
 /*!40000 ALTER TABLE `employee` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -53,4 +51,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-03-21 13:04:34
+-- Dump completed on 2020-03-27 17:26:45

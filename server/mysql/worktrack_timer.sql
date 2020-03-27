@@ -1,5 +1,3 @@
-CREATE DATABASE  IF NOT EXISTS `worktrack` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
-USE `worktrack`;
 -- MySQL dump 10.13  Distrib 8.0.19, for Win64 (x86_64)
 --
 -- Host: localhost    Database: worktrack
@@ -36,7 +34,7 @@ CREATE TABLE `timer` (
   PRIMARY KEY (`id`),
   KEY `employee_id_idx` (`employee_id`),
   CONSTRAINT `employee_id` FOREIGN KEY (`employee_id`) REFERENCES `employee` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=32 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -45,7 +43,7 @@ CREATE TABLE `timer` (
 
 LOCK TABLES `timer` WRITE;
 /*!40000 ALTER TABLE `timer` DISABLE KEYS */;
-INSERT INTO `timer` VALUES (3,'Task1','Build mydatabase','2016-04-17 05:00:00','2017-04-17 05:00:00','2020-03-17 22:00:27',1,NULL),(4,'Task1','Build mydatabase and connect','2016-04-17 05:00:00','2017-04-17 05:00:00','2020-03-17 22:10:44',2,NULL),(5,'Task1','Build mydatabase and build','2016-04-17 05:00:00','2017-04-17 05:00:00','2020-03-17 22:10:44',3,NULL);
+INSERT INTO `timer` VALUES (4,'Task1','Build mydatabase and connect','2016-04-17 10:00:00','2017-04-17 10:00:00','2020-03-18 04:10:44',2,NULL),(5,'Task1','Build mydatabase and build','2016-04-17 10:00:00','2017-04-17 10:00:00','2020-03-18 04:10:44',3,NULL),(6,'task2','Make my add function','2020-03-20 06:00:00','2020-03-21 06:00:00','2020-03-24 20:32:44',NULL,NULL),(7,'task2','Make my add function','2020-03-20 06:00:00','2020-03-21 06:00:00','2020-03-24 20:34:36',NULL,NULL),(31,'Mysql','Mysql export tables','2020-03-27 06:00:00','2020-03-27 06:00:00','2020-03-27 15:51:42',1,NULL);
 /*!40000 ALTER TABLE `timer` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -58,4 +56,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-03-21 13:04:35
+-- Dump completed on 2020-03-27 17:26:45
